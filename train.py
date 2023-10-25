@@ -50,8 +50,8 @@ def train(train_loader,model,criterion,optimizer,epoch,valid_accuracy,start):
         message = '%s %5.1f %6.1f        |      %0.3f     |      %0.3f     | %s' % (\
                 "train", i, epoch,losses.avg,valid_accuracy[0],time_to_str((timer() - start),'min'))
         print(message , end='',flush=True)
-        train_losses.append(losses.avg)
-
+        
+    train_losses.append(losses.avg)
     log.write("\n")
     log.write(message)
 
@@ -79,8 +79,8 @@ def evaluate(val_loader,model,criterion,epoch,train_loss,start):
             message = '%s   %5.1f %6.1f       |      %0.3f     |      %0.3f    | %s' % (\
                     "val", i, epoch, train_loss[0], map.avg,time_to_str((timer() - start),'min'))
             print(message, end='',flush=True)
-            eval_losses.append(map.avg)
-
+        
+        eval_losses.append(map.avg)
         log.write("\n")  
         log.write(message)
     return eval_losses,[map.avg]
@@ -148,8 +148,9 @@ if not os.path.exists(graph_dir):
 graph_file = os.path.join(graph_dir, "loss_vs_epoch.png")
 
 # Plotting the loss versus epoch graph
-plt.plot(config.epochs, train_losses, label='Training Loss')
-plt.plot(config.epochs, eval_losses, label='Evaluation Loss')
+epochs_n = range(1, config.epochs + 1)
+plt.plot(epochs_n, train_losses, label='Training Loss')
+plt.plot(epochs_n, eval_losses, label='Evaluation Loss')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.title('Loss vs Epochs')
