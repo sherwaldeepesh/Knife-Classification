@@ -12,7 +12,8 @@ import cv2
 
 # create dataset class
 class knifeDataset(Dataset):
-    def __init__(self,images_df,mode="train"):
+    def __init__(self,folder_path,images_df,mode="train"):
+        self.f_path = folder_path
         self.images_df = images_df.copy()
         self.images_df.Id = self.images_df.Id
         self.mode = mode
@@ -26,6 +27,7 @@ class knifeDataset(Dataset):
             labels = self.images_df.iloc[index].Label
         else:
             y = str(self.images_df.iloc[index].Id.absolute())
+            print(y)
         if self.mode == "train":
             X = T.Compose([T.ToPILImage(),
                     T.Resize((config.img_weight,config.img_height)),
@@ -45,7 +47,10 @@ class knifeDataset(Dataset):
     def read_images(self,index):
         row = self.images_df.iloc[index]
         filename = str(row.Id)
-        im = cv2.imread(filename)[:,:,::-1]
+        # print(filename[1:])
+        im = cv2.imread(self.f_path+filename[1:])
+        
+        im = im[:,:,::-1]
         return im, filename
 
 

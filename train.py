@@ -3,6 +3,7 @@ import sys
 import warnings
 from datetime import datetime
 from timeit import default_timer as timer
+import matplotlib.pyplot as plt
 import pandas as pd
 import torch.optim
 from sklearn.model_selection import train_test_split
@@ -29,6 +30,8 @@ def train(train_loader,model,criterion,optimizer,epoch,valid_accuracy,start):
     losses = AverageMeter()
     model.train()
     model.training=True
+    train_losses = []
+
     for i,(images,target,fnames) in enumerate(train_loader):
         img = images.cuda(non_blocking=True)
         label = target.cuda(non_blocking=True)
@@ -47,10 +50,12 @@ def train(train_loader,model,criterion,optimizer,epoch,valid_accuracy,start):
         message = '%s %5.1f %6.1f        |      %0.3f     |      %0.3f     | %s' % (\
                 "train", i, epoch,losses.avg,valid_accuracy[0],time_to_str((timer() - start),'min'))
         print(message , end='',flush=True)
+        train_losses.append(losses.avg)
+
     log.write("\n")
     log.write(message)
 
-    return [losses.avg]
+    return train_losses,[losses.avg]
 
 # Validating the model
 def evaluate(val_loader,model,criterion,epoch,train_loss,start):
@@ -58,6 +63,7 @@ def evaluate(val_loader,model,criterion,epoch,train_loss,start):
     model.eval()
     model.training=False
     map = AverageMeter()
+    eval_losses = []
     with torch.no_grad():
         for i, (images,target,fnames) in enumerate(val_loader):
             img = images.cuda(non_blocking=True)
@@ -73,9 +79,11 @@ def evaluate(val_loader,model,criterion,epoch,train_loss,start):
             message = '%s   %5.1f %6.1f       |      %0.3f     |      %0.3f    | %s' % (\
                     "val", i, epoch, train_loss[0], map.avg,time_to_str((timer() - start),'min'))
             print(message, end='',flush=True)
+            eval_losses.append(map.avg)
+
         log.write("\n")  
         log.write(message)
-    return [map.avg]
+    return eval_losses,[map.avg]
 
 ## Computing the mean average precision, accuracy 
 def map_accuracy(probs, truth, k=5):
@@ -95,14 +103,15 @@ def map_accuracy(probs, truth, k=5):
 
 ######################## load file and get splits #############################
 train_imlist = pd.read_csv("train.csv")
-train_gen = knifeDataset(train_imlist,mode="train")
+train_gen = knifeDataset(config.folder_path,train_imlist,mode="train")
 train_loader = DataLoader(train_gen,batch_size=config.batch_size,shuffle=True,pin_memory=True,num_workers=8)
 val_imlist = pd.read_csv("test.csv")
-val_gen = knifeDataset(val_imlist,mode="val")
+val_gen = knifeDataset(config.folder_path,val_imlist,mode="val")
 val_loader = DataLoader(val_gen,batch_size=config.batch_size,shuffle=False,pin_memory=True,num_workers=8)
 
 ## Loading the model to run
-model = timm.create_model('tf_efficientnet_b0', pretrained=True,num_classes=config.n_classes)
+model_name = config.model_name
+model = timm.create_model(model_name, pretrained=True,num_classes=config.n_classes)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
@@ -116,14 +125,35 @@ start_epoch = 0
 val_metrics = [0]
 scaler = torch.cuda.amp.GradScaler()
 start = timer()
+
+model_dir = f"ModelFiles/{model_name}/"
+if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
 #train
 for epoch in range(0,config.epochs):
     lr = get_learning_rate(optimizer)
-    train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
-    val_metrics = evaluate(val_loader,model,criterion,epoch,train_metrics,start)
+    train_losses,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+    eval_losses,val_metrics = evaluate(val_loader,model,criterion,epoch,train_metrics,start)
+
     ## Saving the model
-    filename = "Knife-Effb0-E" + str(epoch + 1)+  ".pt"
+    filename = f"{model_dir}" + str(epoch + 1)+  ".pt"
     torch.save(model.state_dict(), filename)
     
 
-   
+graph_dir = f"Graphs/{model_name}/"
+if not os.path.exists(graph_dir):
+    os.makedirs(graph_dir)
+
+# Define the filename for the graph
+graph_file = os.path.join(graph_dir, "loss_vs_epoch.png")
+
+# Plotting the loss versus epoch graph
+plt.plot(config.epochs, train_losses, label='Training Loss')
+plt.plot(config.epochs, eval_losses, label='Evaluation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.title('Loss vs Epochs')
+plt.legend()
+plt.savefig(graph_file)
+
+

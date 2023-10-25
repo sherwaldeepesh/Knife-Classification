@@ -52,12 +52,13 @@ def map_accuracy(probs, truth, k=5):
 print('reading test file')
 test_files = pd.read_csv("test.csv")
 print('Creating test dataloader')
-test_gen = knifeDataset(test_files,mode="val")
+
+test_gen = knifeDataset(config.folder_path,test_files,mode="val")
 test_loader = DataLoader(test_gen,batch_size=64,shuffle=False,pin_memory=True,num_workers=8)
 
 print('loading trained model')
 model = timm.create_model('tf_efficientnet_b0', pretrained=True,num_classes=config.n_classes)
-model.load_state_dict(torch.load('Knife-Effb0-E9.pt'))
+model.load_state_dict(torch.load('ModelFiles/Knife-Effb0-E19.pt'))
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model.to(device)
 

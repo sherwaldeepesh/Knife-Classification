@@ -1,0 +1,92 @@
+####################
+#
+# Example Job for HTCondor
+#
+####################
+
+#---------------------------------------------
+# Name your batch so it's easy to distinguish in the q.
+JobBatchName = "mlKnife-test"
+
+# --------------------------------------------
+# Executable
+executable    = scripts/test.sh
+
+# ---------------------------------------------------
+# Universe (vanilla, docker)
+universe     = docker
+# docker_image = smishra03/stylegan2
+#docker_image = pytorch/pytorch:1.3-cuda10.1-cudnn7-devel
+#docker_image = tensorflow/tensorflow:1.14.0-gpu
+#docker_image = pytorch/pytorch:1.6.0-cuda10.1-cudnn7-devel
+# docker_image = container-registry.surrey.ac.uk/shared-containers/tf-tfp-gpu@sha256:234b51c2717c6160ec9f050090ec6d90ea1248bd649db633506fbe33a4ee9a16
+
+# docker_image = htcondor/htc-tensorflow-notebook
+
+#dockerimage for evaluation only
+# docker_image = nvcr.io/nvidia/pytorch:22.05-py3
+# docker_image = nvcr.io/nvidia/pytorch:23.09-py3
+docker_image = pytorch/pytorch:latest
+
+initialdir = /mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code
+
+# -------------------------------------------------
+# Event, out and error logs
+log    = DockerLogs/c$(cluster).p$(process).log
+output = DockerLogs/c$(cluster).p$(process).out
+error  = DockerLogs/c$(cluster).p$(process).error
+
+# -----------------------------------
+# File Transfer, Input, Output
+should_transfer_files = YES
+
+# Mount the project spaces containing the Anaconda environments and the code
+# Uncomment this environment line if you're not running on /mnt/fast
+# environment = "mount=$ENV(PWD)"
+
+# -------------------------------------
+# Requirements for the Job (see NvidiaDocker/Example09)
+requirements = (CUDAGlobalMemoryMb > 4500) && (CUDAGlobalMemoryMb <  17000) && \
+#              (HasStornext) && \
+               (CUDACapability > 2.0)
+
+# --------------------------------------
+# Resources
+request_GPUs   = 1
+# this needs to be specified for the AI@Surrey cluster if requesting a GPU
++GPUMem          = 11000  
+request_CPUs   = 8
+request_memory = 16G
+
+#This job will complete in less than 1 hour
++JobRunTime = 2
+
+#This job can checkpoint
++CanCheckpoint = false
+
+# ------------------------------------
+# Request for guaruanteed run time. 0 means job is happy to checkpoint and move at any time.
+# This lets Condor remove our job ASAP if a machine needs rebooting. Useful when we can checkpoint and restore
+# Measured in seconds, so it can be changed to match the time it takes for an epoch to run
+MaxJobRetirementTime = 0
+
+# -----------------------------------
+# Queue commands. We can use variables and flags to launch our command with multiple options (as you would from the command line)
+arguments = 
+#$(run_metrics.py) --models_list weights/eval_list --output metric_results.csv
+
+
+# NOTE: Variable names can't contain dashes!
+#script = $ENV(PWD)/run_metrics.py
+#ckpt_dir = $ENV(PWD)/models
+#models_list = $ENV(PWD)/weights/eval_list
+#output = $ENV(PWD)/metric_results.csv
+
+#batch_size = 32
+#epochs = 10
+#lr = 0.01
+
+#python run_metrics.py --models_list weights/eval_list --output metric_results.csv
+
+
+queue 1
