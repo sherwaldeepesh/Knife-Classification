@@ -126,7 +126,7 @@ val_metrics = [0]
 scaler = torch.cuda.amp.GradScaler()
 start = timer()
 
-model_dir = f"ModelFiles/{model_name}/"
+model_dir = f"/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{model_name}/"
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 #train
