@@ -15,11 +15,13 @@ import timm
 from utils import *
 warnings.filterwarnings('ignore')
 
+model_name = config.model_name
+
 ## Writing the loss and results
-if not os.path.exists("./logs/"):
-    os.mkdir("./logs/")
+if not os.path.exists(f"./logs/{model_name}/"):
+    os.mkdir(f"./logs/{model_name}/")
 log = Logger()
-log.open("logs/%s_log_train.txt")
+log.open(f"logs/{model_name}/%s_log_train.txt")
 log.write("\n----------------------------------------------- [START %s] %s\n\n" % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '-' * 51))
 log.write('                           |----- Train -----|----- Valid----|---------|\n')
 log.write('mode     iter     epoch    |       loss      |        mAP    | time    |\n')
@@ -30,14 +32,19 @@ def train(train_loader,model,criterion,optimizer,epoch,valid_accuracy,start):
     losses = AverageMeter()
     model.train()
     model.training=True
-    train_losses = []
-
+    map = AverageMeter()
     for i,(images,target,fnames) in enumerate(train_loader):
         img = images.cuda(non_blocking=True)
         label = target.cuda(non_blocking=True)
         
         with torch.cuda.amp.autocast():
             logits = model(img)
+            preds = logits.softmax(1)
+            
+        valid_map5, valid_acc1, valid_acc5 = map_accuracy(preds, label)
+        map.update(valid_map5,img.size(0))
+
+
         loss = criterion(logits, label)
         losses.update(loss.item(),images.size(0))
         scaler.scale(loss).backward()
@@ -50,20 +57,19 @@ def train(train_loader,model,criterion,optimizer,epoch,valid_accuracy,start):
         message = '%s %5.1f %6.1f        |      %0.3f     |      %0.3f     | %s' % (\
                 "train", i, epoch,losses.avg,valid_accuracy[0],time_to_str((timer() - start),'min'))
         print(message , end='',flush=True)
-        
-    train_losses.append(losses.avg)
+
     log.write("\n")
     log.write(message)
 
-    return train_losses,[losses.avg]
+    return losses.avg,map.avg, [losses.avg]
 
 # Validating the model
 def evaluate(val_loader,model,criterion,epoch,train_loss,start):
+    losses = AverageMeter()
     model.cuda()
     model.eval()
     model.training=False
     map = AverageMeter()
-    eval_losses = []
     with torch.no_grad():
         for i, (images,target,fnames) in enumerate(val_loader):
             img = images.cuda(non_blocking=True)
@@ -73,17 +79,20 @@ def evaluate(val_loader,model,criterion,epoch,train_loss,start):
                 logits = model(img)
                 preds = logits.softmax(1)
             
+            loss = criterion(logits, label)
+            losses.update(loss.item(),images.size(0))
+
             valid_map5, valid_acc1, valid_acc5 = map_accuracy(preds, label)
             map.update(valid_map5,img.size(0))
             print('\r',end='',flush=True)
             message = '%s   %5.1f %6.1f       |      %0.3f     |      %0.3f    | %s' % (\
                     "val", i, epoch, train_loss[0], map.avg,time_to_str((timer() - start),'min'))
             print(message, end='',flush=True)
-        
-        eval_losses.append(map.avg)
+            
+
         log.write("\n")  
         log.write(message)
-    return eval_losses,[map.avg]
+    return losses.avg,map.avg, [map.avg]
 
 ## Computing the mean average precision, accuracy 
 def map_accuracy(probs, truth, k=5):
@@ -110,7 +119,7 @@ val_gen = knifeDataset(config.folder_path,val_imlist,mode="val")
 val_loader = DataLoader(val_gen,batch_size=config.batch_size,shuffle=False,pin_memory=True,num_workers=8)
 
 ## Loading the model to run
-model_name = config.model_name
+
 model = timm.create_model(model_name, pretrained=True,num_classes=config.n_classes)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model.to(device)
@@ -130,11 +139,20 @@ model_dir = f"/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFile
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 #train
+train_losses = []
+eval_losses = []
+
+train_map = []
+val_map = []
 for epoch in range(0,config.epochs):
     lr = get_learning_rate(optimizer)
-    train_losses,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
-    eval_losses,val_metrics = evaluate(val_loader,model,criterion,epoch,train_metrics,start)
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+    v,s2,val_metrics = evaluate(val_loader,model,criterion,epoch,train_metrics,start)
+    train_losses.append(t)
+    eval_losses.append(v)
 
+    train_map.append(s1.to(device = torch.device('cpu'), dtype=torch.float))
+    val_map.append(s2.to(device = torch.device('cpu'), dtype=torch.float))
     ## Saving the model
     filename = f"{model_dir}" + str(epoch + 1)+  ".pt"
     torch.save(model.state_dict(), filename)
@@ -145,10 +163,16 @@ if not os.path.exists(graph_dir):
     os.makedirs(graph_dir)
 
 # Define the filename for the graph
+
 graph_file = os.path.join(graph_dir, "loss_vs_epoch.png")
+# print(train_losses)
+
 
 # Plotting the loss versus epoch graph
 epochs_n = range(1, config.epochs + 1)
+
+plt.figure()  # Create a new figure
+
 plt.plot(epochs_n, train_losses, label='Training Loss')
 plt.plot(epochs_n, eval_losses, label='Evaluation Loss')
 plt.xlabel('Epochs')
@@ -158,3 +182,20 @@ plt.legend()
 plt.savefig(graph_file)
 
 
+# Define the filename for the graph
+
+graph_file = os.path.join(graph_dir, "mAP_vs_epoch.png")
+# print(train_losses)
+
+
+# Plotting the loss versus epoch graph
+
+plt.figure()  # Create a new figure
+
+plt.plot(epochs_n, train_map, label='Training mAP')
+plt.plot(epochs_n, val_map, label='Evaluation mAP')
+plt.xlabel('Epochs')
+plt.ylabel('mAP')
+plt.title('mAP vs Epochs')
+plt.legend()
+plt.savefig(graph_file)
