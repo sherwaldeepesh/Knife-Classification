@@ -120,7 +120,18 @@ val_loader = DataLoader(val_gen,batch_size=config.batch_size,shuffle=False,pin_m
 
 ## Loading the model to run
 
-model = timm.create_model(model_name, pretrained=True,num_classes=config.n_classes)
+model = timm.create_model(model_name, pretrained=True, num_classes = 0)
+
+model.head = nn.Sequential(
+    nn.BatchNorm1d(2048),
+    nn.Linear(in_features=2048, out_features=768, bias=False),
+    nn.ReLU(),
+    nn.BatchNorm1d(768),
+    nn.Dropout(0.4),
+    nn.Linear(in_features=768, out_features=192, bias=False)
+)
+
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model.to(device)
 

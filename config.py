@@ -5,7 +5,7 @@ class DefaultConfigs(object):
     batch_size = 16 ## batch size
     epochs = 50    ## epochs
     learning_rate=0.00005  ## learning rate
-    model_name = "vit_small_patch32_224_in21k"  ##Model_name
+    model_name = "wide_resnet50_2"  ##Model_name
 
     folder_path = "/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/" ## folder path
 config = DefaultConfigs()
