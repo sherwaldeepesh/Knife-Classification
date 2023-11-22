@@ -1,0 +1,52 @@
+000 (139282.000.000) 2023-11-22 16:58:28 Job submitted from host: <131.227.81.127:9618?addrs=131.227.81.127-9618&alias=aisurrey-condor.surrey.ac.uk&noUDP&sock=schedd_1723_69c5>
+...
+040 (139282.000.000) 2023-11-22 16:58:29 Started transferring input files
+	Transferring to host: <131.227.80.172:9618?addrs=131.227.80.172-9618&alias=aisurrey01.surrey.ac.uk&noUDP&sock=slot1_1_9902_9acc_238886>
+...
+040 (139282.000.000) 2023-11-22 16:58:29 Finished transferring input files
+...
+001 (139282.000.000) 2023-11-22 16:58:30 Job executing on host: <131.227.80.172:9618?addrs=131.227.80.172-9618&alias=aisurrey01.surrey.ac.uk&noUDP&sock=startd_9702_57ef>
+...
+006 (139282.000.000) 2023-11-22 17:03:41 Image size of job updated: 2790
+	2790  -  MemoryUsage of job (MB)
+	2857388  -  ResidentSetSize of job (KB)
+...
+006 (139282.000.000) 2023-11-22 17:08:41 Image size of job updated: 2886
+	2886  -  MemoryUsage of job (MB)
+	2955984  -  ResidentSetSize of job (KB)
+...
+006 (139282.000.000) 2023-11-22 17:24:09 Image size of job updated: 2901
+	2901  -  MemoryUsage of job (MB)
+	2971052  -  ResidentSetSize of job (KB)
+...
+006 (139282.000.000) 2023-11-22 17:31:42 Image size of job updated: 2946
+	2946  -  MemoryUsage of job (MB)
+	3017224  -  ResidentSetSize of job (KB)
+...
+006 (139282.000.000) 2023-11-22 17:40:32 Image size of job updated: 9943
+	9943  -  MemoryUsage of job (MB)
+	10181984  -  ResidentSetSize of job (KB)
+...
+040 (139282.000.000) 2023-11-22 17:40:32 Started transferring output files
+...
+040 (139282.000.000) 2023-11-22 17:40:32 Finished transferring output files
+...
+005 (139282.000.000) 2023-11-22 17:40:32 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 02:26:00, Sys 0 00:08:46  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 02:26:00, Sys 0 00:08:46  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2346523  -  Run Bytes Sent By Job
+	299  -  Run Bytes Received By Job
+	2346523  -  Total Bytes Sent By Job
+	299  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :  2316           1    246844 
+	   Gpus (Average)       :     0.51        1         1 "GPU-36a655d1-c604-0db2-f8ee-bf0e0ad128fb"
+	   GpusMemory (MB)      :  2411                       
+	   Memory (MB)          :  9943       16384     16384 
+
+	Job terminated of its own accord at 2023-11-22T17:40:32Z.
+...

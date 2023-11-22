@@ -2,13 +2,16 @@ import argparse
 
 
 def argument_parser():
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser()
 
     # ************************************************************
     # Datasets (general)
     # ************************************************************
+
+    parser.add_argument("--modelname", type=str, default = "resnet50", help = "Model Name")
+
+    parser.add_argument("--pretrain", type=bool, default=False, help = "Pretraining parameter since model is obtaining from Timm library")
+
     parser.add_argument(
         "--root", type=str, default="/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/", help="root path to data directory"
     )
@@ -254,7 +257,8 @@ def argument_parser():
     #     action="store_true",
     #     help="use available gpus instead of specified devices (useful when using managed clusters)",
     # )
-    return parser
+    opt = parser.parse_args()
+    return opt, parser
 
 
 def dataset_kwargs(parsed_args):
@@ -307,3 +311,5 @@ def lr_scheduler_kwargs(parsed_args):
         "stepsize": parsed_args.stepsize,
         "gamma": parsed_args.gamma,
     }
+
+
