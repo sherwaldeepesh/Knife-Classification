@@ -119,8 +119,8 @@ if config.head == False:
 else:
     model = timm.create_model(config.model_name, pretrained=config.inputs.pretrain, num_classes = 0)
     model.fc = nn.Sequential(
-        nn.BatchNorm1d(2560),
-        nn.Linear(in_features=2560, out_features=768, bias=False),
+        nn.BatchNorm1d(2048),
+        nn.Linear(in_features=2048, out_features=768, bias=False),
         nn.ReLU(),
         nn.BatchNorm1d(768),
         nn.Dropout(config.dropout),

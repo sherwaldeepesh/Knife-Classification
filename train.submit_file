@@ -10,7 +10,7 @@ JobBatchName = "mlknife-train-resnet"
 
 # --------------------------------------------
 # Executable
-executable   =  scripts/akaurtrain.sh
+executable   =  scripts/train.sh
 
 # ---------------------------------------------------
 # Universe (vanilla, docker)

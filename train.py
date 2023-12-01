@@ -125,8 +125,8 @@ if config.head == False:
 else:
     model = timm.create_model(model_name, pretrained=config.inputs.pretrain, num_classes = 0)
     model.fc = nn.Sequential(
-        nn.BatchNorm1d(2560),    #2560 tfefficientnetb7  #wideresnet 2048
-        nn.Linear(in_features=2560, out_features=768, bias=False),
+        nn.BatchNorm1d(2048),    #2560 tfefficientnetb7  #wideresnet 2048
+        nn.Linear(in_features=2048, out_features=768, bias=False),
         nn.ReLU(),
         nn.BatchNorm1d(768),
         nn.Dropout(config.dropout),
@@ -151,7 +151,7 @@ elif optim_n == "rmsprop":
 
 
 scheduler = lr_scheduler.CosineAnnealingLR(optimizer=optimizer, T_max=config.epochs * len(train_loader), eta_min=0,last_epoch=-1)
-criterion = FocalLoss().cuda()
+criterion = ArcFaceLoss().cuda()
 
 ############################# Training #################################
 start_epoch = 0
