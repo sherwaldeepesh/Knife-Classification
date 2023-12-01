@@ -11,3 +11,50 @@
 	2452  -  MemoryUsage of job (MB)
 	2511276  -  ResidentSetSize of job (KB)
 ...
+006 (139342.000.000) 2023-11-22 20:47:06 Image size of job updated: 2945
+	2945  -  MemoryUsage of job (MB)
+	3016160  -  ResidentSetSize of job (KB)
+...
+006 (139342.000.000) 2023-11-22 20:57:07 Image size of job updated: 3021
+	3021  -  MemoryUsage of job (MB)
+	3093772  -  ResidentSetSize of job (KB)
+...
+006 (139342.000.000) 2023-11-22 21:07:08 Image size of job updated: 3031
+	3031  -  MemoryUsage of job (MB)
+	3104140  -  ResidentSetSize of job (KB)
+...
+006 (139342.000.000) 2023-11-22 21:17:09 Image size of job updated: 3070
+	3070  -  MemoryUsage of job (MB)
+	3143968  -  ResidentSetSize of job (KB)
+...
+006 (139342.000.000) 2023-11-22 21:22:09 Image size of job updated: 6908
+	6908  -  MemoryUsage of job (MB)
+	7074252  -  ResidentSetSize of job (KB)
+...
+006 (139342.000.000) 2023-11-22 21:24:17 Image size of job updated: 9908
+	9908  -  MemoryUsage of job (MB)
+	10146232  -  ResidentSetSize of job (KB)
+...
+040 (139342.000.000) 2023-11-22 21:24:17 Started transferring output files
+...
+040 (139342.000.000) 2023-11-22 21:24:17 Finished transferring output files
+...
+005 (139342.000.000) 2023-11-22 21:24:18 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 02:26:28, Sys 0 00:08:28  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 02:26:28, Sys 0 00:08:28  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2345823  -  Run Bytes Sent By Job
+	351  -  Run Bytes Received By Job
+	2345823  -  Total Bytes Sent By Job
+	351  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :  2315           1    246844 
+	   Gpus (Average)       :     0.44        1         1 "GPU-32954e09-eb32-2198-2be0-15a252bef954"
+	   GpusMemory (MB)      :  2147                       
+	   Memory (MB)          :  9908       16384     16384 
+
+	Job terminated of its own accord at 2023-11-22T21:24:17Z.
+...

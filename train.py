@@ -18,10 +18,10 @@ warnings.filterwarnings('ignore')
 model_name = config.model_name
 
 ## Writing the loss and results
-if not os.path.exists(f"./logs/{model_name}/"):
-    os.mkdir(f"./logs/{model_name}/")
+if not os.path.exists(f"./logs/{config.name+model_name}/"):
+    os.mkdir(f"./logs/{config.name+model_name}/")
 log = Logger()
-log.open(f"logs/{model_name}/%s_log_train.txt")
+log.open(f"logs/{config.name+model_name}/%s_log_train.txt")
 log.write("\n----------------------------------------------- [START %s] %s\n\n" % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '-' * 51))
 log.write('                           |----- Train -----|----- Valid----|---------|\n')
 log.write('mode     iter     epoch    |       loss      |        mAP    | time    |\n')
@@ -120,25 +120,38 @@ val_loader = DataLoader(val_gen,batch_size=config.batch_size,shuffle=False,pin_m
 
 ## Loading the model to run
 
-model = timm.create_model(model_name, pretrained=config.inputs.pretrain, num_classes = 192)
-
-# model.head = nn.Sequential(
-#     nn.BatchNorm1d(384),
-#     nn.Linear(in_features=384, out_features=768, bias=False),
-#     nn.ReLU(),
-#     nn.BatchNorm1d(768),
-#     nn.Dropout(0.4),
-#     nn.Linear(in_features=768, out_features=192, bias=False)
-# )
+if config.head == False:
+    model = timm.create_model(model_name, pretrained=config.inputs.pretrain, num_classes = 192)
+else:
+    model = timm.create_model(model_name, pretrained=config.inputs.pretrain, num_classes = 0)
+    model.fc = nn.Sequential(
+        nn.BatchNorm1d(2560),    #2560 tfefficientnetb7  #wideresnet 2048
+        nn.Linear(in_features=2560, out_features=768, bias=False),
+        nn.ReLU(),
+        nn.BatchNorm1d(768),
+        nn.Dropout(config.dropout),
+        nn.Linear(in_features=768, out_features=192, bias=False)
+    )
 
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print(f"device : {device}")
 model.to(device)
 
 ############################# Parameters #################################
-optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
+optim_n = config.optimizer
+if optim_n == "adam":
+    optimizer = optim.Adam(model.parameters(), lr=config.learning_rate, weight_decay = config.wtdecay)
+elif optim_n == "amsgrad":
+    optimizer = optim.Adam(model.parameters(), lr=config.learning_rate, amsgrad = True, weight_decay = config.wtdecay)
+elif optim_n == "sgd":
+    optimizer = optim.SGD(model.parameters(), lr=config.learning_rate, weight_decay = config.wtdecay)
+elif optim_n == "rmsprop":
+    optimizer = optim.RMSprop(model.parameters(), lr=config.learning_rate, weight_decay = config.wtdecay)
+
+
 scheduler = lr_scheduler.CosineAnnealingLR(optimizer=optimizer, T_max=config.epochs * len(train_loader), eta_min=0,last_epoch=-1)
-criterion = nn.CrossEntropyLoss().cuda()
+criterion = FocalLoss().cuda()
 
 ############################# Training #################################
 start_epoch = 0
@@ -146,7 +159,7 @@ val_metrics = [0]
 scaler = torch.cuda.amp.GradScaler()
 start = timer()
 
-model_dir = f"/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{model_name}/"
+model_dir = f"/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{model_name}/"
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 #train
@@ -169,7 +182,7 @@ for epoch in range(0,config.epochs):
     torch.save(model.state_dict(), filename)
     
 
-graph_dir = f"Graphs/{model_name}/"
+graph_dir = f"Graphs/{config.name}/{model_name}/"
 if not os.path.exists(graph_dir):
     os.makedirs(graph_dir)
 

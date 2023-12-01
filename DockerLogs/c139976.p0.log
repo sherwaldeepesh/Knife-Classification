@@ -1,0 +1,64 @@
+000 (139976.000.000) 2023-11-28 11:43:07 Job submitted from host: <131.227.81.127:9618?addrs=131.227.81.127-9618&alias=aisurrey-condor.surrey.ac.uk&noUDP&sock=schedd_1723_69c5>
+...
+040 (139976.000.000) 2023-11-28 11:43:07 Started transferring input files
+	Transferring to host: <131.227.80.190:9618?addrs=131.227.80.190-9618&alias=aisurrey10.surrey.ac.uk&noUDP&sock=slot1_1_5897_b849_4030>
+...
+040 (139976.000.000) 2023-11-28 11:43:07 Finished transferring input files
+...
+001 (139976.000.000) 2023-11-28 11:43:08 Job executing on host: <131.227.80.190:9618?addrs=131.227.80.190-9618&alias=aisurrey10.surrey.ac.uk&noUDP&sock=startd_5699_9e52>
+...
+006 (139976.000.000) 2023-11-28 11:43:16 Image size of job updated: 299
+	299  -  MemoryUsage of job (MB)
+	306508  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 11:48:17 Image size of job updated: 2970
+	2970  -  MemoryUsage of job (MB)
+	3042244  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 11:53:18 Image size of job updated: 3121
+	3121  -  MemoryUsage of job (MB)
+	3195996  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 12:33:22 Image size of job updated: 3151
+	3151  -  MemoryUsage of job (MB)
+	3226836  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 14:03:29 Image size of job updated: 5199
+	5199  -  MemoryUsage of job (MB)
+	5323976  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 14:08:29 Image size of job updated: 9764
+	9764  -  MemoryUsage of job (MB)
+	9999244  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 14:13:29 Image size of job updated: 10340
+	10340  -  MemoryUsage of job (MB)
+	10588868  -  ResidentSetSize of job (KB)
+...
+006 (139976.000.000) 2023-11-28 16:35:55 Image size of job updated: 10373
+	10373  -  MemoryUsage of job (MB)
+	10622320  -  ResidentSetSize of job (KB)
+...
+040 (139976.000.000) 2023-11-28 16:35:55 Started transferring output files
+...
+040 (139976.000.000) 2023-11-28 16:35:55 Finished transferring output files
+...
+005 (139976.000.000) 2023-11-28 16:35:55 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 08:05:28, Sys 0 00:43:33  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 08:05:28, Sys 0 00:43:33  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	4691678  -  Run Bytes Sent By Job
+	3540  -  Run Bytes Received By Job
+	4691678  -  Total Bytes Sent By Job
+	3540  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :  4610           4    246844 
+	   Gpus (Average)       :     0.71        1         1 "GPU-85c653d0-d85f-963d-5950-363499bbb660"
+	   GpusMemory (MB)      :  6707                       
+	   Memory (MB)          : 10373       32768     32768 
+
+	Job terminated of its own accord at 2023-11-28T16:35:55Z.
+...

@@ -11,3 +11,38 @@
 	166  -  MemoryUsage of job (MB)
 	170560  -  ResidentSetSize of job (KB)
 ...
+006 (139343.000.000) 2023-11-22 20:48:27 Image size of job updated: 3052
+	3052  -  MemoryUsage of job (MB)
+	3125844  -  ResidentSetSize of job (KB)
+...
+006 (139343.000.000) 2023-11-22 21:03:29 Image size of job updated: 3070
+	3070  -  MemoryUsage of job (MB)
+	3143824  -  ResidentSetSize of job (KB)
+...
+006 (139343.000.000) 2023-11-22 21:23:19 Image size of job updated: 10257
+	10257  -  MemoryUsage of job (MB)
+	10504096  -  ResidentSetSize of job (KB)
+...
+040 (139343.000.000) 2023-11-22 21:23:19 Started transferring output files
+...
+040 (139343.000.000) 2023-11-22 21:23:20 Finished transferring output files
+...
+005 (139343.000.000) 2023-11-22 21:23:20 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 02:24:07, Sys 0 00:08:13  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 02:24:07, Sys 0 00:08:13  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2345813  -  Run Bytes Sent By Job
+	331  -  Run Bytes Received By Job
+	2345813  -  Total Bytes Sent By Job
+	331  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :  2315           1    246844 
+	   Gpus (Average)       :     0.54        1         1 "GPU-a100ace2-2694-3aa2-55ef-ae3a446ea6bf"
+	   GpusMemory (MB)      :  2407                       
+	   Memory (MB)          : 10257       16384     16384 
+
+	Job terminated of its own accord at 2023-11-22T21:23:19Z.
+...

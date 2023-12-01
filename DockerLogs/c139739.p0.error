@@ -1,0 +1,334 @@
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for EfficientNet:
+	Missing key(s) in state_dict: "fc.0.weight", "fc.0.bias", "fc.0.running_mean", "fc.0.running_var", "fc.1.weight", "fc.3.weight", "fc.3.bias", "fc.3.running_mean", "fc.3.running_var", "fc.5.weight". 
+	Unexpected key(s) in state_dict: "classifier.weight", "classifier.bias". 
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 181, in forward
+    x = self.conv_pw(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 457, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 453, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 46.00 MiB (GPU 0; 10.75 GiB total capacity; 9.65 GiB already allocated; 13.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7batch64/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 182, in forward
+    x = self.bn1(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/layers/norm_act.py", line 112, in forward
+    x = self.act(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/activation.py", line 391, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/functional.py", line 2047, in silu
+    return torch._C._nn.silu_(input)
+RuntimeError: CUDA out of memory. Tried to allocate 222.00 MiB (GPU 0; 10.75 GiB total capacity; 9.58 GiB already allocated; 11.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7batch128/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 182, in forward
+    x = self.bn1(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/layers/norm_act.py", line 112, in forward
+    x = self.act(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/activation.py", line 391, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/functional.py", line 2047, in silu
+    return torch._C._nn.silu_(input)
+RuntimeError: CUDA out of memory. Tried to allocate 222.00 MiB (GPU 0; 10.75 GiB total capacity; 9.58 GiB already allocated; 11.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7wtdc8/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 182, in forward
+    x = self.bn1(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/layers/norm_act.py", line 112, in forward
+    x = self.act(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/activation.py", line 391, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/functional.py", line 2047, in silu
+    return torch._C._nn.silu_(input)
+RuntimeError: CUDA out of memory. Tried to allocate 222.00 MiB (GPU 0; 10.75 GiB total capacity; 9.58 GiB already allocated; 11.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7wtdc6/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 182, in forward
+    x = self.bn1(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/layers/norm_act.py", line 112, in forward
+    x = self.act(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/activation.py", line 391, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/functional.py", line 2047, in silu
+    return torch._C._nn.silu_(input)
+RuntimeError: CUDA out of memory. Tried to allocate 222.00 MiB (GPU 0; 10.75 GiB total capacity; 9.58 GiB already allocated; 11.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7wtdc12/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 182, in forward
+    x = self.bn1(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/layers/norm_act.py", line 112, in forward
+    x = self.act(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/activation.py", line 391, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/functional.py", line 2047, in silu
+    return torch._C._nn.silu_(input)
+RuntimeError: CUDA out of memory. Tried to allocate 222.00 MiB (GPU 0; 10.75 GiB total capacity; 9.58 GiB already allocated; 11.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7head128_2/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 173, in <module>
+    t,s1,train_metrics = train(train_loader,model,criterion,optimizer,epoch,val_metrics,start)
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/train.py", line 41, in train
+    logits = model(img)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 557, in forward
+    x = self.forward_features(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet.py", line 545, in forward_features
+    x = self.blocks(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/efficientnet_blocks.py", line 182, in forward
+    x = self.bn1(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/timm/models/layers/norm_act.py", line 112, in forward
+    x = self.act(x)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/activation.py", line 391, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/functional.py", line 2047, in silu
+    return torch._C._nn.silu_(input)
+RuntimeError: CUDA out of memory. Tried to allocate 222.00 MiB (GPU 0; 10.75 GiB total capacity; 9.58 GiB already allocated; 11.62 MiB free; 9.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/tf_efficientnet_b7head128_4/tf_efficientnet_b7/50.pt'
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for EfficientNet:
+	size mismatch for fc.0.weight: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.0.bias: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.0.running_mean: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.0.running_var: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.1.weight: copying a param with shape torch.Size([768, 2560]) from checkpoint, the shape in current model is torch.Size([768, 2048]).
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 130, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for EfficientNet:
+	size mismatch for fc.0.weight: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.0.bias: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.0.running_mean: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.0.running_var: copying a param with shape torch.Size([2560]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for fc.1.weight: copying a param with shape torch.Size([768, 2560]) from checkpoint, the shape in current model is torch.Size([768, 2048]).

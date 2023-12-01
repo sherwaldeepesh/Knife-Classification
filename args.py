@@ -8,9 +8,19 @@ def argument_parser():
     # Datasets (general)
     # ************************************************************
 
+    parser.add_argument("--dropout", type = float, default= 0.4, help = "Droput Rate")
+
+    parser.add_argument("--classhead", type = bool, default= False, help = "if want to add head layers")
+
+    parser.add_argument("--wtdecay", type = float, default = 1e-5, help = "weight decay")
+
+    parser.add_argument("--exname", type = str, default="knifeclassification", help = "experiment Name")
+
     parser.add_argument("--modelname", type=str, default = "resnet50", help = "Model Name")
 
     parser.add_argument("--pretrain", type=bool, default=False, help = "Pretraining parameter since model is obtaining from Timm library")
+
+    parser.add_argument("--optim", type = str, default="adam", help = "Optimizer type")
 
     parser.add_argument(
         "--root", type=str, default="/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/", help="root path to data directory"
@@ -132,7 +142,7 @@ def argument_parser():
     # )
 
     parser.add_argument(
-        "--train-battch-size", default=16, type=int, help="training batch size"
+        "--trainbatchsize", default=16, type=int, help="training batch size"
     )
     # parser.add_argument(
     #     "--test-batch-size", default=100, type=int, help="test batch size"

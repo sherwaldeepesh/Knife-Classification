@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/mnt/fast/nobackup/users/ds01502/MLKnifeProject/EEEM066_Knife_Classification_code/test.py", line 118, in <module>
+    model.load_state_dict(torch.load(f'/mnt/fast/nobackup/scratch4weeks/ds01502/MLDataset-Knife/ModelFiles/{config.name}/{config.model_name}/50.pt'))
+  File "/mnt/fast/nobackup/users/ds01502/miniconda3/envs/mlproject/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for ResNet:
+	Unexpected key(s) in state_dict: "head.0.weight", "head.0.bias", "head.0.running_mean", "head.0.running_var", "head.0.num_batches_tracked", "head.1.weight", "head.3.weight", "head.3.bias", "head.3.running_mean", "head.3.running_var", "head.3.num_batches_tracked", "head.5.weight". 

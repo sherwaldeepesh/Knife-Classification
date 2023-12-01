@@ -15,3 +15,54 @@
 	2960  -  MemoryUsage of job (MB)
 	3031980  -  ResidentSetSize of job (KB)
 ...
+006 (139341.000.000) 2023-11-22 20:51:18 Image size of job updated: 2991
+	2991  -  MemoryUsage of job (MB)
+	3063236  -  ResidentSetSize of job (KB)
+...
+006 (139341.000.000) 2023-11-22 21:01:18 Image size of job updated: 3011
+	3011  -  MemoryUsage of job (MB)
+	3084020  -  ResidentSetSize of job (KB)
+...
+006 (139341.000.000) 2023-11-22 21:11:20 Image size of job updated: 3048
+	3048  -  MemoryUsage of job (MB)
+	3121764  -  ResidentSetSize of job (KB)
+...
+006 (139341.000.000) 2023-11-22 21:16:20 Image size of job updated: 3067
+	3067  -  MemoryUsage of job (MB)
+	3140656  -  ResidentSetSize of job (KB)
+...
+006 (139341.000.000) 2023-11-22 21:31:22 Image size of job updated: 3073
+	3073  -  MemoryUsage of job (MB)
+	3147488  -  ResidentSetSize of job (KB)
+...
+006 (139341.000.000) 2023-11-22 21:46:26 Image size of job updated: 3078
+	3078  -  MemoryUsage of job (MB)
+	3152784  -  ResidentSetSize of job (KB)
+...
+006 (139341.000.000) 2023-11-22 22:01:27 Image size of job updated: 10000
+	10000  -  MemoryUsage of job (MB)
+	10240876  -  ResidentSetSize of job (KB)
+...
+040 (139341.000.000) 2023-11-22 22:01:32 Started transferring output files
+...
+040 (139341.000.000) 2023-11-22 22:01:32 Finished transferring output files
+...
+005 (139341.000.000) 2023-11-22 22:01:32 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:03:08, Sys 0 00:09:20  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 03:03:08, Sys 0 00:09:20  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2345810  -  Run Bytes Sent By Job
+	325  -  Run Bytes Received By Job
+	2345810  -  Total Bytes Sent By Job
+	325  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :  2315           1    246844 
+	   Gpus (Average)       :     0.87        1         1 "GPU-ec4eb180-2293-1d4a-97fd-626bac3b365a"
+	   GpusMemory (MB)      :  5811                       
+	   Memory (MB)          : 10000       16384     16384 
+
+	Job terminated of its own accord at 2023-11-22T22:01:32Z.
+...

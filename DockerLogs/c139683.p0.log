@@ -1,0 +1,72 @@
+000 (139683.000.000) 2023-11-24 19:02:23 Job submitted from host: <131.227.81.127:9618?addrs=131.227.81.127-9618&alias=aisurrey-condor.surrey.ac.uk&noUDP&sock=schedd_1723_69c5>
+...
+040 (139683.000.000) 2023-11-24 19:02:24 Started transferring input files
+	Transferring to host: <131.227.80.184:9618?addrs=131.227.80.184-9618&alias=aisurrey07.surrey.ac.uk&noUDP&sock=slot1_1_5856_d4e7_2087>
+...
+040 (139683.000.000) 2023-11-24 19:02:24 Finished transferring input files
+...
+001 (139683.000.000) 2023-11-24 19:02:25 Job executing on host: <131.227.80.184:9618?addrs=131.227.80.184-9618&alias=aisurrey07.surrey.ac.uk&noUDP&sock=startd_5659_2e89>
+...
+006 (139683.000.000) 2023-11-24 19:02:33 Image size of job updated: 389
+	389  -  MemoryUsage of job (MB)
+	398744  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:07:33 Image size of job updated: 3266
+	3266  -  MemoryUsage of job (MB)
+	3344560  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:12:33 Image size of job updated: 3273
+	3273  -  MemoryUsage of job (MB)
+	3352216  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:22:34 Image size of job updated: 3279
+	3279  -  MemoryUsage of job (MB)
+	3357864  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:32:35 Image size of job updated: 3293
+	3293  -  MemoryUsage of job (MB)
+	3372456  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:37:36 Image size of job updated: 3304
+	3304  -  MemoryUsage of job (MB)
+	3384276  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:47:37 Image size of job updated: 3318
+	3318  -  MemoryUsage of job (MB)
+	3397644  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:52:38 Image size of job updated: 4046
+	4046  -  MemoryUsage of job (MB)
+	4143168  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:57:38 Image size of job updated: 8691
+	8691  -  MemoryUsage of job (MB)
+	8899624  -  ResidentSetSize of job (KB)
+...
+006 (139683.000.000) 2023-11-24 19:59:21 Image size of job updated: 10373
+	10373  -  MemoryUsage of job (MB)
+	10622608  -  ResidentSetSize of job (KB)
+...
+040 (139683.000.000) 2023-11-24 19:59:21 Started transferring output files
+...
+040 (139683.000.000) 2023-11-24 19:59:21 Finished transferring output files
+...
+005 (139683.000.000) 2023-11-24 19:59:21 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 02:25:33, Sys 0 00:11:23  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 02:25:33, Sys 0 00:11:23  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	303986  -  Run Bytes Sent By Job
+	540  -  Run Bytes Received By Job
+	303986  -  Total Bytes Sent By Job
+	540  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :   322           1    246844 
+	   Gpus (Average)       :     0.49        1         1 "GPU-b3957c7d-9a18-82f2-8dc5-24c4700966f6"
+	   GpusMemory (MB)      :  2277                       
+	   Memory (MB)          : 10373       32768     32768 
+
+	Job terminated of its own accord at 2023-11-24T19:59:21Z.
+...

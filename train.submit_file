@@ -10,7 +10,7 @@ JobBatchName = "mlknife-train-resnet"
 
 # --------------------------------------------
 # Executable
-executable   =  scripts/train.sh
+executable   =  scripts/akaurtrain.sh
 
 # ---------------------------------------------------
 # Universe (vanilla, docker)
@@ -40,23 +40,26 @@ should_transfer_files = YES
 
 # -------------------------------------
 # Requirements for the Job (see NvidiaDocker/Example09)
-requirements = (CUDAGlobalMemoryMb > 4500) && (CUDAGlobalMemoryMb <  17000) && \
+requirements = (CUDAGlobalMemoryMb > 4500) && (CUDAGlobalMemoryMb <  23000) && \
 #              (HasStornext) && \
-               (CUDACapability > 2.0)
+               (CUDACapability > 2.0) && (Machine == "aisurrey16.surrey.ac.uk" || Machine == "aisurrey10.surrey.ac.uk" || Machine == "aisurrey04.surrey.ac.uk" || Machine == "aisurrey02.surrey.ac.uk" || Machine == "aisurrey05.surrey.ac.uk" || Machine == "aisurrey07.surrey.ac.uk")
 
 # --------------------------------------
 # Resources
 request_GPUs   = 1
 # this needs to be specified for the AI@Surrey cluster if requesting a GPU
-+GPUMem        = 11000 
++GPUMem        = 11000
 request_CPUs   = 8
-request_memory = 16G
+request_memory = 32G
 
 #This job will complete in less than 1 hour
 +JobRunTime = 21
 
 #This job can checkpoint
 +CanCheckpoint = false
+
+# To assign rank for taking machine
+Rank =  ((machine == "aisurrey08.surrey.ac.uk")*3) + ((machine == "aisurrey10.surrey.ac.uk")*2) + (machine == "slot1_2@aisurrey4.surrey.ac.uk")
 
 # ------------------------------------
 # Request for guaruanteed run time. 0 means job is happy to checkpoint and move at any time.
