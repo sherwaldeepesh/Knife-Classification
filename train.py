@@ -151,7 +151,7 @@ elif optim_n == "rmsprop":
 
 
 scheduler = lr_scheduler.CosineAnnealingLR(optimizer=optimizer, T_max=config.epochs * len(train_loader), eta_min=0,last_epoch=-1)
-criterion = ArcFaceLoss().cuda()
+criterion = ArcFaceLoss().cuda()   #nn.CrossEntropyLoss().cuda()
 
 ############################# Training #################################
 start_epoch = 0
