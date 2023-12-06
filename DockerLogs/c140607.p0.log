@@ -11,3 +11,46 @@
 	306  -  MemoryUsage of job (MB)
 	313692  -  ResidentSetSize of job (KB)
 ...
+006 (140607.000.000) 2023-12-01 15:23:29 Image size of job updated: 3038
+	3038  -  MemoryUsage of job (MB)
+	3111124  -  ResidentSetSize of job (KB)
+...
+006 (140607.000.000) 2023-12-01 15:53:32 Image size of job updated: 3054
+	3054  -  MemoryUsage of job (MB)
+	3127708  -  ResidentSetSize of job (KB)
+...
+006 (140607.000.000) 2023-12-01 16:03:32 Image size of job updated: 4483
+	4483  -  MemoryUsage of job (MB)
+	4590884  -  ResidentSetSize of job (KB)
+...
+006 (140607.000.000) 2023-12-01 16:08:33 Image size of job updated: 9222
+	9222  -  MemoryUsage of job (MB)
+	9443936  -  ResidentSetSize of job (KB)
+...
+006 (140607.000.000) 2023-12-01 16:09:42 Image size of job updated: 10346
+	10346  -  MemoryUsage of job (MB)
+	10594312  -  ResidentSetSize of job (KB)
+...
+040 (140607.000.000) 2023-12-01 16:09:42 Started transferring output files
+...
+040 (140607.000.000) 2023-12-01 16:09:42 Finished transferring output files
+...
+005 (140607.000.000) 2023-12-01 16:09:43 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 02:34:45, Sys 0 00:08:47  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 02:34:45, Sys 0 00:08:47  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2283236  -  Run Bytes Sent By Job
+	561  -  Run Bytes Received By Job
+	2283236  -  Total Bytes Sent By Job
+	561  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.00        8         8 
+	   Disk (KB)            :  2255           1    246844 
+	   Gpus (Average)       :     0.67        1         1 "GPU-85c653d0-d85f-963d-5950-363499bbb660"
+	   GpusMemory (MB)      :  2939                       
+	   Memory (MB)          : 10346       32768     32768 
+
+	Job terminated of its own accord at 2023-12-01T16:09:42Z.
+...
